@@ -454,14 +454,16 @@ button {
 .subscribe_form {
   display: flex;
   align-items: end;
+  gap: 24px;
 }
-.subscribe_form_label {
-  display: block;
+.subscribe_paragraf {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #fff;
   margin-bottom: 16px;
+}
+.subscribe_form_label {
 }
 .subscribe_email_input {
   font-size: 12px;
@@ -473,9 +475,11 @@ button {
   border-radius: 4px;
   width: 264px;
   height: 40px;
-  background: #2e2f42;
+  background: transparent;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
   padding-left: 16px;
-  margin-right: 24px;
 }
 .subscribe_email_input::placeholder {
   font-size: 12px;
@@ -485,21 +489,24 @@ button {
 }
 
 .subscribe_form_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  text-align: center;
   color: #fff;
   border-radius: 4px;
-  padding: 8px 64px 8px 24px;
-  width: 165px;
+  /*padding: 8px 64px 8px 24px; */
+  min-width: 165px;
   height: 40px;
-  background: #4d5ae5;
+  background-color: #4d5ae5;
   border: none;
-  position: relative;
+  /*position: relative; */
+  cursor: pointer;
 }
 .subscribe_svg {
-  position: absolute;
+  margin-left: 16px;
   right: 24px;
   top: 8px;
   fill: #fff;
@@ -517,8 +524,8 @@ button {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition-property: visibility, opacity;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is_open {
@@ -538,31 +545,42 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 72px 24px 24px 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .model_window_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   line-height: 0;
-  fill: #2e2f42;
-  border-radius: 100%;
+  border-radius: 50%;
   width: 24px;
   height: 24px;
-  border-color: rgba(0, 0, 0, 0.1);
-  border-width: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 24px;
   right: 24px;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: background-color, fill;
+  transition-property: background-color, fill, border;
+  background-color: #e7e9fc;
 }
 
-.model_window_button:hover {
+.model_window_button:hover,
+.model_window_button:focus {
   background-color: #404bbf;
+  border: none;
   fill: #fff;
 }
 .model_window_svg {
+  fill: #2e2f42;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: fill;
 }
-.ellips_window_svg {
+.model_window_svg:hover,
+.model_window_svg:focus {
+  fill: #fff;
 }
+
 .model_title {
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -570,37 +588,42 @@ button {
   color: #2e2f42;
   font-size: 16px;
   margin-bottom: 16px;
+  line-height: 1.5;
 }
 .input_model {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   width: 100%;
   height: 40px;
+  background-color: transparent;
   outline: transparent;
   padding-left: 38px;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: border;
+  transition-property: border-color;
 }
 
 .input_model:focus,
 .input_model:hover {
-  border: 1px solid #4d5ae5;
+  border-color: #4d5ae5;
 }
 
 .label_model {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
   margin-bottom: 4px;
+  display: block;
 }
 
 .model_form {
 }
 
+.container_input_label {
+  margin-bottom: 8px;
+}
 .container_input {
   position: relative;
-  margin-bottom: 8px;
 }
 
 .model_svg_input {
@@ -624,14 +647,20 @@ button {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   outline: transparent;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  background-color: transparent;
+  padding: 8px 16px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: border-color;
 }
 .model_textarea::placeholder {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: rgba(46, 47, 66, 0.4);
-  padding-top: 8px;
-  padding-left: 16px;
 }
 
 .model_textarea:focus,
@@ -639,19 +668,22 @@ button {
   border-color: #4d5ae5;
 }
 
+.container_comment {
+  margin-bottom: 16px;
+}
 .container_chechbox {
   margin-bottom: 24px;
 }
 .model_checkbox_label {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
   cursor: pointer;
 }
 
 .model_checkbox_link {
-  line-height: 1.33333;
+  line-height: 1.33;
   text-decoration: underline;
   color: #4d5ae5;
 }
@@ -664,22 +696,23 @@ button {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  fill: none;
+  fill: transparent;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color, fill, border;
 }
 
 .chechbox_svg {
 }
-.model_checkbox:checked + .model_checkbox_label .span_checkbox {
-  border: transparent;
+
+.model_checkbox:checked + .model_checkbox_label > .span_checkbox {
+  border: none;
   background-color: #404bbf;
-  fill: #fff;
+  fill: #f4f4fd;
 }
 
 .model_form_submit {
   border-radius: 4px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   font-weight: 500;
   line-height: 1.5;
@@ -687,12 +720,13 @@ button {
   text-align: center;
   color: #fff;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-  background: #4d5ae5;
+  background-color: #4d5ae5;
   display: block;
   margin: 0 auto;
   border: none;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color;
+  cursor: pointer;
 }
 
 .model_form_submit:focus,
