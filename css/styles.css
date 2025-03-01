@@ -560,8 +560,9 @@ button {
   position: absolute;
   top: 24px;
   right: 24px;
+  fill: #2e2f42;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: background-color, fill, border;
+  transition-property: background-color, border;
   background-color: #e7e9fc;
 }
 
@@ -572,13 +573,12 @@ button {
   fill: #fff;
 }
 .model_window_svg {
-  fill: #2e2f42;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: fill;
 }
 .model_window_svg:hover,
 .model_window_svg:focus {
-  fill: #fff;
+  /*fill: #fff; */
 }
 
 .model_title {
